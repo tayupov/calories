@@ -1,0 +1,403 @@
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+        $('#calculate').click(function(){
+            checkErrorMessage();
+            var res = getValues();
+            console.log(res);
+            if(res.success) {
+                $('#alert-empty').hide();
+                var grundumsatz;
+                var gender = res.values[0];
+                var age = res.values[1];
+                var height = res.values[2];
+                var weight = res.values[3];
+                var goal = res.values[4];
+                var activity = res.values[5];
+                var frequeny = res.values[6];
+                if(gender === 'male'){
+                    grundumsatz = 65.5 + (13.7 * weight ) + (5 * height ) - (6.8 * age );
+                } else {
+                    grundumsatz = 655 + (9.6 * weight ) + (1.8 * height ) - (4.7 * age );
+                }
+                var leistungsumsatz_1 = (grundumsatz * activity) - grundumsatz;
+                var leistungsumsatz_2 = leistungsumsatz_1 + ((frequeny * 400) / 7);
+                var umsatz = grundumsatz + leistungsumsatz_2;
+                var zielUmsatz;
+                switch(goal) {
+                    case "1":
+                        zielUmsatz = umsatz + 300;
+                        break;
+                    case "2":
+                        zielUmsatz = umsatz - 300;
+                        break;
+                    case "3":
+                        zielUmsatz = umsatz - 500;
+                        break;
+                    case "4":
+                        zielUmsatz = umsatz + 500;
+                        break;
+                    case "5":
+                        zielUmsatz = umsatz;
+                        break;
+                }
+                var finalGrundumsatz = Math.round(grundumsatz).toString() + " kcal";
+                var finalLeistungsumsatz = Math.round(leistungsumsatz_2).toString() + " kcal";
+                var finalZielumsatz = Math.round(zielUmsatz).toString() + " kcal";
+                $('#gu').val(finalGrundumsatz);
+                $('#lu').val(finalLeistungsumsatz);
+                $('#zu').val(finalZielumsatz);
+            }
+        });
+        function getCheckedValue(type) {
+            var value = $('input[name='+type+']:checked').val();
+            if(value) return value;
+            if(!value){
+                $('#alert-empty').show();
+                window.scroll(0,findPos(document.getElementById("alert-empty")));
+            };
+        }
+        function getValue(type) {
+            var value = $('#'+type).val();
+            if(value) return value;
+            if(!value){
+                $('#alert-empty').show();
+                window.scroll(0,findPos(document.getElementById("alert-empty")));
+            };
+        }
+        function getValues() {
+            var res = {success: true, values: []};
+            res.values.push(getCheckedValue("gender"));
+            res.values.push(getValue("age"));
+            res.values.push(getValue("height"));
+            res.values.push(getValue("weight"));
+            res.values.push(getCheckedValue("goal"));
+            res.values.push(getCheckedValue("activity"));
+            res.values.push(getCheckedValue("frequency"));
+            res.values.forEach(function(value){
+                if(typeof value == 'undefined' || value == ''){
+                    res.success = false;
+                }
+            });
+            return res;
+        }
+        function findPos(obj) {
+            var curtop = 0;
+            if (obj.offsetParent) {
+                do {
+                    curtop += obj.offsetTop;
+                } while (obj = obj.offsetParent);
+            return [curtop];
+            }
+        }
+        function checkErrorMessage() {
+            if($("#alert-empty").is(":visible") == true){
+                $("#alert-empty").hide();
+                $("#alert-empty").fadeIn(500);
+            }
+        }
+
+    });
+    </script>
+    <style>
+        .top-buffer {
+            margin-top:40px;
+        }
+        .top-buffer-min {
+            margin-top: 20px;
+        }
+        /*remove spinners mozilla*/
+        input[type="number"] {
+            -moz-appearance:textfield;
+        }
+        input[type="number"]:focus{
+            outline: 0 none;
+        }
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+        .person-info-input {
+            border-radius: 1px;
+            box-shadow: none!important;
+            border: 1px solid #d7d7d7;
+            color: black;
+            width: 100%;
+            margin: 0;
+            padding-left: 10px;
+            line-height: 40px;
+            height: 40px;
+
+            -webkit-border-radius: 1px;
+            -moz-border-radius: 1px;
+            -webkit-box-shadow: none!important;
+            -moz-box-shadow: none!important
+        }
+        .male:before {
+            font-family: "FontAwesome";
+            content: "\f183";
+        }
+        .female:before {
+            font-family: "FontAwesome";
+            content: "\f182";
+        }
+        .gender-label {
+            border-radius: 1px;
+            box-shadow: none!important;
+            border: 1px solid #d7d7d7;
+            color: #d7d7d7;
+            padding: 0 10px;
+            width: 100%;
+            margin: 0;
+            margin-top: 10px;
+            line-height: 40px;
+            height: 40px;
+            cursor: pointer;
+            text-align: center;
+
+            -webkit-border-radius: 1px;
+            -moz-border-radius: 1px;
+            -webkit-box-shadow: none!important;
+            -moz-box-shadow: none!important
+        }
+        .gender-input:checked + label{
+            color: black;
+            border: 1.5px solid black;
+        }
+
+        input[type='radio'] + label {
+            cursor: pointer;
+            font-weight: normal!important;
+        }
+        input[type='radio']{
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border:none;
+            border-radius: 0;
+            display: none;
+            font-size: 1em;
+            width: 100%
+        }
+        /*Deco for IE*/
+        input[type='radio'] {
+            width:auto;
+            float:left;
+            margin-right: .75em;
+            background:transparent;
+            border:none;
+        }
+        .gat-wrapper {
+            height: 350px;
+        }
+        .goal-wrapper, .activity-wrapper, .frequency-wrapper {
+            height: 100%;
+            display: table;
+            table-layout: fixed;
+        }
+        .goal, .activity, .frequency {
+            display: table-row;
+        }
+        .goal-input:checked + label:before,
+        .goal-input:not(:checked) + label:before {
+            font-family: "FontAwesome";
+            font-size: 20px;
+            vertical-align: middle;
+            content: "\f096";
+            color: black;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+        .goal-input:checked + label:before {
+            font-family: "FontAwesome";
+            font-size: 20px;
+            vertical-align: middle;
+            color: black;
+            content: "\f046";
+        }
+        .tooltip.right .tooltip-inner .tooltip.right .tooltip-arrow {
+            background-color: black;
+        }
+        .result {
+            width: 100%;
+            margin: 0;
+            padding-left: 10px;
+            line-height: 40px;
+            height: 40px;
+        }
+        .btn {
+            border: 0 none;
+        }
+        .btn-info {
+            background: black;
+            color: white;
+        }
+
+        .btn-info:hover, .btn-info:focus {
+            background: #191919;
+            box-shadow: none;
+        }
+        .btn-info:active, .btn-info.active, .btn-info:active:focus {
+            background: black;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="modal-header">
+            <h3>Kalorienrechner</h3>
+        </div>
+
+        <!--Gender selection -->
+        <div class="row top-buffer">
+            <div class="col-lg-2 col-md-2"></div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <input class="gender-input" type="radio" name="gender" id="gender-male" value="male">
+                <label class="gender-label male" for="gender-male"> Mann</label>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <input class="gender-input" type="radio" name="gender" id="gender-female" value="female">
+                <label class="gender-label female" for="gender-female"> Frau</label>
+            </div>
+            <div class="col-lg-2 col-md-2"></div>
+        </div>
+
+        <!--Age Height Weight -->
+        <div class="row top-buffer">
+            <div class="top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
+                <label for="age" class="h5"><b>Dein Alter:</b></label><br>
+                <input class="person-info-input" type="number" min="1" max="100" id="age" placeholder="in Jahren">
+            </div>
+            <div class="top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
+                <label for="height" class="h5"><b>Deine K&oumlrpergr&ouml&szlige:</b></label><br>
+                <input class="person-info-input" type="number" min="1" id="height" placeholder="in cm">
+            </div>
+            <div class="top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
+                <label for="weight" class="h5"><b>Dein Gewicht:</b></label><br>
+                <input class="person-info-input" type="number" min="1" id="weight" placeholder="in kg">
+            </div>
+        </div>
+
+        <!--Goals & Activities & Training-->
+        <div class="row top-buffer gat-wrapper">
+            <div class="goal-wrapper top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
+                <div class="modal-header">
+                    Dein Trainingsziel:
+                </div>
+                <div class="goal radio-bulletpoints">
+                    <input class="goal-input" type="radio" name="goal" id="goal1" value="1">
+                    <label for="goal1" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="Eat more!">Muskelaufbau</label>
+                </div>
+                <div class="goal radio-bulletpoints">
+                    <input class="goal-input" type="radio" name="goal" id="goal2" value="2">
+                    <label for="goal2" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="Eat less!">Muskeldefinition</label>
+                </div>
+                <div class="goal radio-bulletpoints">
+                    <input class="goal-input" type="radio" name="goal" id="goal3" value="3">
+                    <label for="goal3" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="Eat much less!">Gewicht verlieren</label>
+                </div>
+                <div class="goal radio-bulletpoints">
+                    <input class="goal-input" type="radio" name="goal" id="goal4" value="5">
+                    <label for="goal4" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="Eat just enough!">Gewicht halten</label>
+                </div>
+            </div>
+
+            <div class="activity-wrapper top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
+                <div class="modal-header">
+                    Körperliche Aktivität:
+                </div>
+                <div class="activity radio-bulletpoints">
+                    <input class="goal-input" type="radio" name="activity" id="activity1" value="1.1">
+                    <label for="activity1" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="Kaum körperliche Bewegung">sitzend</label>
+                </div>
+                <div class="activity radio-bulletpoints">
+                    <input class="goal-input" type="radio" name="activity" id="activity2" value="1.5">
+                    <label for="activity2" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="Etwas körperliche Bewegung">sitzend und gehend</label>
+                </div>
+                <div class="activity radio-bulletpoints">
+                    <input class="goal-input" type="radio" name="activity" id="activity3" value="1.7">
+                    <label for="activity3" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="Viel körperliche Bewegung">stehend und gehend</label>
+                </div>
+                <div class="activity radio-bulletpoints">
+                    <input class="goal-input" type="radio" name="activity" id="activity4" value="1.9">
+                    <label for="activity4" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="Starke körperliche Bewegung">körperliche Arbeit</label>
+                </div>
+            </div>
+
+            <div class="frequency-wrapper top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
+                <div class="modal-header">
+                    Training/Woche:
+                </div>
+                <div class="frequency radio-bulletpoints">
+                    <input class="goal-input" type="radio" name="frequency" id="frequency0" value="0.5">
+                    <label for="frequency0">Gar nicht</label>
+                </div>
+                <div class="frequency radio-bulletpoints">
+                    <input class="goal-input" type="radio" name="frequency" id="frequency1" value="1">
+                    <label for="frequency1">1 Mal</label>
+                </div>
+                <div class="frequency radio-bulletpoints">
+                    <input class="goal-input" type="radio" name="frequency" id="frequency2" value="2">
+                    <label for="frequency2">2 Mal</label>
+                </div>
+                <div class="frequency radio-bulletpoints">
+                    <input class="goal-input" type="radio" name="frequency" id="frequency3" value="3">
+                    <label for="frequency3">3 Mal</label>
+                </div>
+                <div class="frequency radio-bulletpoints">
+                    <input class="goal-input" type="radio" name="frequency" id="frequency4" value="4">
+                    <label for="frequency4">4 Mal</label>
+                </div>
+                <div class="frequency radio-bulletpoints">
+                    <input class="goal-input" type="radio" name="frequency" id="frequency5" value="5">
+                    <label for="frequency5">5 Mal</label>
+                </div>
+                <div class="frequency radio-bulletpoints">
+                    <input class="goal-input" type="radio" name="frequency" id="frequency6" value="6">
+                    <label for="frequency6">6 Mal</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row top-buffer">
+            <div class="top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
+                <label>Grundumsatz:</label>
+                <input readonly class="result" id="gu">
+            </div>
+            <div class="top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
+                <label>Leistungsumsatz:</label>
+                <input readonly class="result" id="lu">
+            </div>
+            <div class="top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
+                <label>Zielumsatz:</label>
+                <input readonly class="result" id="zu">
+            </div>
+        </div>
+
+
+
+        <div class="row top-buffer">
+            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 top-buffer-min">
+                <button id="calculate" type="button" class="btn btn-info btn-block">Berechnen</button>
+            </div>
+            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 top-buffer-min">
+                <div class="alert alert-danger" id="alert-empty" style="display:none;">
+                    <center>Bitte alle Felder ausfüllen!</center>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Container -->
+</body>
