@@ -1,0 +1,144 @@
+.top-buffer {
+            margin-top:40px;
+        }
+        .top-buffer-min {
+            margin-top: 20px;
+        }
+        /*remove spinners mozilla*/
+        input[type="number"] {
+            -moz-appearance:textfield;
+        }
+        input[type="number"]:focus{
+            outline: 0 none;
+        }
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+        .person-info-input {
+            border-radius: 1px;
+            box-shadow: none!important;
+            border: 1px solid #d7d7d7;
+            color: black;
+            width: 100%;
+            margin: 0;
+            padding-left: 10px;
+            line-height: 40px;
+            height: 40px;
+
+            -webkit-border-radius: 1px;
+            -moz-border-radius: 1px;
+            -webkit-box-shadow: none!important;
+            -moz-box-shadow: none!important
+        }
+        .male:before {
+            font-family: "FontAwesome";
+            content: "\f183";
+        }
+        .female:before {
+            font-family: "FontAwesome";
+            content: "\f182";
+        }
+        .gender-label {
+            border-radius: 1px;
+            box-shadow: none!important;
+            border: 1px solid #d7d7d7;
+            color: #d7d7d7;
+            padding: 0 10px;
+            width: 100%;
+            margin: 0;
+            margin-top: 10px;
+            line-height: 40px;
+            height: 40px;
+            cursor: pointer;
+            text-align: center;
+
+            -webkit-border-radius: 1px;
+            -moz-border-radius: 1px;
+            -webkit-box-shadow: none!important;
+            -moz-box-shadow: none!important
+        }
+        .gender-input:checked + label{
+            color: black;
+            border: 1.5px solid black;
+        }
+
+        input[type='radio'] + label {
+            cursor: pointer;
+            font-weight: normal!important;
+        }
+        input[type='radio']{
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border:none;
+            border-radius: 0;
+            display: none;
+            font-size: 1em;
+            width: 100%
+        }
+        /*Deco for IE*/
+        input[type='radio'] {
+            width:auto;
+            float:left;
+            margin-right: .75em;
+            background:transparent;
+            border:none;
+        }
+        .gat-wrapper {
+            height: 350px;
+        }
+        .goal-wrapper, .activity-wrapper, .frequency-wrapper {
+            height: 100%;
+            display: table;
+            table-layout: fixed;
+        }
+        .goal, .activity, .frequency {
+            display: table-row;
+        }
+        .goal-input:checked + label:before,
+        .goal-input:not(:checked) + label:before {
+            font-family: "FontAwesome";
+            font-size: 20px;
+            vertical-align: middle;
+            content: "\f096";
+            color: black;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+        .goal-input:checked + label:before {
+            font-family: "FontAwesome";
+            font-size: 20px;
+            vertical-align: middle;
+            color: black;
+            content: "\f046";
+        }
+        .tooltip.right .tooltip-inner .tooltip.right .tooltip-arrow {
+            background-color: black;
+        }
+        .result {
+            width: 100%;
+            margin: 0;
+            padding-left: 10px;
+            line-height: 40px;
+            height: 40px;
+        }
+        .btn {
+            border: 0 none;
+        }
+        .btn-info {
+            background: black;
+            color: white;
+        }
+
+        .btn-info:hover, .btn-info:focus {
+            background: #191919;
+            box-shadow: none;
+        }
+        .btn-info:active, .btn-info.active, .btn-info:active:focus {
+            background: black;
+            box-shadow: none;
+        }
