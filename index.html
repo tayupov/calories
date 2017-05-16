@@ -1,7 +1,9 @@
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="./styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -12,30 +14,27 @@
     <div class="container">
         <!--Gender selection -->
         <div class="row top-buffer">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-xs-10 col-xs-offset-1">
                 <input class="gender-input" type="radio" name="gender" id="gender-male" value="male">
                 <label class="gender-label male" for="gender-male"> Mann</label>
             </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-xs-10 col-xs-offset-1">
                 <input class="gender-input" type="radio" name="gender" id="gender-female" value="female">
                 <label class="gender-label female" for="gender-female"> Frau</label>
             </div>
-            <div class="col-lg-2"></div>
         </div>
 
         <!--Age Height Weight -->
         <div class="row top-buffer">
-            <div class="top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
+            <div class="top-buffer-min col-xs-10 col-xs-offset-1">
                 <label for="age" class="h5"><b>Dein Alter:</b></label><br>
                 <input class="person-info-input" type="number" min="1" max="100" id="age" placeholder="in Jahren">
             </div>
-            <div class="top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
+            <div class="top-buffer-min col-xs-10 col-xs-offset-1">
                 <label for="height" class="h5"><b>Deine K&oumlrpergr&ouml&szlige:</b></label><br>
                 <input class="person-info-input" type="number" min="1" id="height" placeholder="in cm">
             </div>
-            <div class="top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
+            <div class="top-buffer-min col-xs-10 col-xs-offset-1">
                 <label for="weight" class="h5"><b>Dein Gewicht:</b></label><br>
                 <input class="person-info-input" type="number" min="1" id="weight" placeholder="in kg">
             </div>
@@ -43,79 +42,79 @@
 
         <!--Goals & Activities & Training-->
         <div class="row top-buffer gat-wrapper">
-            <div class="goal-wrapper top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
-                <div class="modal-header">
+            <div class="goal-wrapper top-buffer-min col-xs-10 col-xs-offset-1">
+                <div class="flex-header modal-header">
                     Dein Trainingsziel:
                 </div>
-                <div class="goal radio-bulletpoints">
+                <div class="goal">
                     <input class="goal-input" type="radio" name="goal" id="goal1" value="1">
                     <label for="goal1" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="">Muskelaufbau</label>
                 </div>
-                <div class="goal radio-bulletpoints">
+                <div class="goal">
                     <input class="goal-input" type="radio" name="goal" id="goal2" value="2">
                     <label for="goal2" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="">Muskeldefinition</label>
                 </div>
-                <div class="goal radio-bulletpoints">
+                <div class="goal">
                     <input class="goal-input" type="radio" name="goal" id="goal3" value="3">
                     <label for="goal3" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="">Gewicht verlieren</label>
                 </div>
-                <div class="goal radio-bulletpoints">
+                <div class="goal">
                     <input class="goal-input" type="radio" name="goal" id="goal4" value="5">
                     <label for="goal4" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="">Gewicht halten</label>
                 </div>
             </div>
 
-            <div class="activity-wrapper top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
-                <div class="modal-header">
+            <div class="activity-wrapper top-buffer-min col-xs-10 col-xs-offset-1">
+                <div class="flex-header modal-header">
                     Körperliche Aktivität:
                 </div>
-                <div class="activity radio-bulletpoints">
+                <div class="activity ">
                     <input class="goal-input" type="radio" name="activity" id="activity1" value="1.1">
                     <label for="activity1" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="">sitzend</label>
                 </div>
-                <div class="activity radio-bulletpoints">
+                <div class="activity ">
                     <input class="goal-input" type="radio" name="activity" id="activity2" value="1.5">
                     <label for="activity2" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="">sitzend und gehend</label>
                 </div>
-                <div class="activity radio-bulletpoints">
+                <div class="activity ">
                     <input class="goal-input" type="radio" name="activity" id="activity3" value="1.7">
                     <label for="activity3" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="">stehend und gehend</label>
                 </div>
-                <div class="activity radio-bulletpoints">
+                <div class="activity ">
                     <input class="goal-input" type="radio" name="activity" id="activity4" value="1.9">
                     <label for="activity4" class="goal-tooltip" data-toggle="tooltip" data-placement="right" title="">körperliche Arbeit</label>
                 </div>
             </div>
 
-            <div class="frequency-wrapper top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
-                <div class="modal-header">
+            <div class="frequency-wrapper top-buffer-min col-xs-10 col-xs-offset-1">
+                <div class="flex-header modal-header">
                     Training/Woche:
                 </div>
-                <div class="frequency radio-bulletpoints">
+                <div class="frequency ">
                     <input class="goal-input" type="radio" name="frequency" id="frequency0" value="0.5">
                     <label for="frequency0">Gar nicht</label>
                 </div>
-                <div class="frequency radio-bulletpoints">
+                <div class="frequency ">
                     <input class="goal-input" type="radio" name="frequency" id="frequency1" value="1">
                     <label for="frequency1">1 Mal</label>
                 </div>
-                <div class="frequency radio-bulletpoints">
+                <div class="frequency ">
                     <input class="goal-input" type="radio" name="frequency" id="frequency2" value="2">
                     <label for="frequency2">2 Mal</label>
                 </div>
-                <div class="frequency radio-bulletpoints">
+                <div class="frequency ">
                     <input class="goal-input" type="radio" name="frequency" id="frequency3" value="3">
                     <label for="frequency3">3 Mal</label>
                 </div>
-                <div class="frequency radio-bulletpoints">
+                <div class="frequency ">
                     <input class="goal-input" type="radio" name="frequency" id="frequency4" value="4">
                     <label for="frequency4">4 Mal</label>
                 </div>
-                <div class="frequency radio-bulletpoints">
+                <div class="frequency ">
                     <input class="goal-input" type="radio" name="frequency" id="frequency5" value="5">
                     <label for="frequency5">5 Mal</label>
                 </div>
-                <div class="frequency radio-bulletpoints">
+                <div class="frequency ">
                     <input class="goal-input" type="radio" name="frequency" id="frequency6" value="6">
                     <label for="frequency6">6 Mal</label>
                 </div>
@@ -123,15 +122,15 @@
         </div>
 
         <div class="row top-buffer">
-            <div class="top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
+            <div class="top-buffer-min col-xs-10 col-xs-offset-1">
                 <label>Grundumsatz:</label>
                 <input readonly class="result" id="gu">
             </div>
-            <div class="top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
+            <div class="top-buffer-min  col-xs-10 col-xs-offset-1">
                 <label>Leistungsumsatz:</label>
                 <input readonly class="result" id="lu">
             </div>
-            <div class="top-buffer-min col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-xs-8 col-sm-offset-0 col-xs-offset-2">
+            <div class="top-buffer-min  col-xs-10 col-xs-offset-1">
                 <label>Zielumsatz:</label>
                 <input readonly class="result" id="zu">
             </div>
@@ -140,14 +139,15 @@
 
 
         <div class="row top-buffer">
-            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 top-buffer-min">
+            <div class="top-buffer-min col-xs-10 col-xs-offset-1">
                 <button id="calculate" type="button" class="btn btn-info btn-block">Berechnen</button>
             </div>
-            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 top-buffer-min">
+            <div class="top-buffer-min col-xs-10 col-xs-offset-1">
                 <div class="alert alert-danger" id="alert-empty" style="display:none;">
                     <center>Bitte alle Felder ausfüllen!</center>
                 </div>
             </div>
         </div>
-    </div> <!-- Container -->
+    </div>
+    <!-- Container -->
 </body>
