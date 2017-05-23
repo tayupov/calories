@@ -1,8 +1,22 @@
+@media (max-width:480px)  { 
+    .goal, .activity, .frequency {
+        width: 100%;
+    }
+}
+
+@media (min-width:480px)  { 
+    .goal, .activity, .frequency {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 50%;
+    }
+}
+
 .top-buffer {
-            margin-top:40px;
+    margin-top:20px;
 }
 .top-buffer-min {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 /*remove spinners mozilla*/
 input[type="number"] {
@@ -99,11 +113,6 @@ input[type='radio'] {
     flex-flow: row wrap;
     align-items: flex-end;
     justify-content: space-between;
-}
-.goal, .activity, .frequency {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 50%;
 }
 .goal-input:checked + label:before,
 .goal-input:not(:checked) + label:before {
