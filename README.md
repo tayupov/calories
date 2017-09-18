@@ -1,2 +1,1 @@
-# calories
-Determine your required calories intake
+# Caloric Intake Calculator
